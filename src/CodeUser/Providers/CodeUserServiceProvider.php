@@ -23,6 +23,10 @@ class CodeUserServiceProvider extends ServiceProvider
             __DIR__ . '/../../resources/views/auth' => base_path('resources/views/auth')
         ], 'auth');
 
+        $this->publishes([
+            __DIR__ . '/../../resources/views/email' => base_path('resources/views/email')
+        ], 'email');
+
         $this->loadViewsFrom(__DIR__.'/../../resources/views/codeuser', 'codeuser');
 
         require __DIR__ .'/../../routes.php';
@@ -35,5 +39,7 @@ class CodeUserServiceProvider extends ServiceProvider
         $this->app->singleton('codepress_user_route', function(){
            return new Router();
         });
+
+        $this->app->register(EventServiceProvider::class);
     }
 }

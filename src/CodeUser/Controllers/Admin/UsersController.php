@@ -1,14 +1,15 @@
 <?php
 
 
-namespace CodePress\CodeUser\Controllers;
+namespace CodePress\CodeUser\Controllers\Admin;
 
 
 use CodePress\CodeUser\Repository\UserRepositoryInterface;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
+use CodePress\CodeUser\Controllers\Controller;
 
-class AdminPostsController extends Controller
+class UsersController extends Controller
 {
     private $repository;
     private $response;

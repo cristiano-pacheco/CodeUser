@@ -9,22 +9,22 @@ Route::group([
 
 ], function () {
 
-    Route::get('', 'Admin\UsersControllers@index')
+    Route::get('', 'Admin\UsersController@index')
         ->name('index');
 
-    Route::get('/create', 'Admin\UsersControllers@create')
+    Route::get('/create', 'Admin\UsersController@create')
         ->name('create');
 
-    Route::post('/store', 'Admin\UsersControllers@store')
+    Route::post('/store', 'Admin\UsersController@store')
         ->name('store');
 
-    Route::get('/{id}/edit/', 'Admin\UsersControllers@edit')
+    Route::get('/{id}/edit/', 'Admin\UsersController@edit')
         ->name('edit');
 
-    Route::post('/{id}/update', 'Admin\UsersControllers@update')
+    Route::post('/{id}/update', 'Admin\UsersController@update')
         ->name('update');
 
-    Route::get('/{id}/delete/', 'Admin\UsersControllers@delete')
+    Route::get('/{id}/delete/', 'Admin\UsersController@delete')
         ->name('delete');
 
 });

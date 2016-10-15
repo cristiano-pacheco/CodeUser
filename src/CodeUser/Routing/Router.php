@@ -17,7 +17,7 @@ class Router
             // Authentication Routes...
             Route::get("login", "$namespace\\Auth\\AuthController@showLoginForm")->name("login");
             Route::post("login", "$namespace\\Auth\\AuthController@login");
-            Route::post("logout", "$namespace\\Auth\\AuthController@logout");
+            Route::get("logout", "$namespace\\Auth\\AuthController@logout");
 
             // Password Reset Routes...
             Route::get("password/reset", "$namespace\\Auth\\PasswordController@showLinkRequestForm");
