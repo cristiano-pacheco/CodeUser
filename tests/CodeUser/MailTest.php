@@ -2,9 +2,11 @@
 
 namespace CodePress\CodeUser\Tests\Repository;
 
+use CodePress\CodeUser\Repository\RoleRepositoryInterface;
 use CodePress\CodeUser\Repository\UserRepositoryEloquent;
 use CodePress\CodeUser\Tests\AbstractMailTestCase;
 use Illuminate\Support\Facades\Hash;
+use Mockery as m;
 
 class MailTest extends AbstractMailTestCase
 {
@@ -17,7 +19,8 @@ class MailTest extends AbstractMailTestCase
     {
         parent::setUp();
         $this->migrate();
-        $this->repository = new UserRepositoryEloquent();
+        $roleRepositoryMock = m::mock(RoleRepositoryInterface::class);
+        $this->repository = new UserRepositoryEloquent($roleRepositoryMock);
     }
 
     public function test_can_create_user()

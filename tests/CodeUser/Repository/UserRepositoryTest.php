@@ -3,9 +3,11 @@
 namespace CodePress\CodeUser\Tests\Repository;
 
 use CodePress\CodeUser\Event\UserCreatedEvent;
+use CodePress\CodeUser\Repository\RoleRepositoryInterface;
 use CodePress\CodeUser\Repository\UserRepositoryEloquent;
 use CodePress\CodeUser\Tests\AbstractTestCase;
 use Illuminate\Support\Facades\Hash;
+use Mockery as m;
 
 class UserRepositoryTest extends AbstractTestCase
 {
@@ -18,7 +20,8 @@ class UserRepositoryTest extends AbstractTestCase
     {
         parent::setUp();
         $this->migrate();
-        $this->repository = new UserRepositoryEloquent();
+        $roleRepositoryMock = m::mock(RoleRepositoryInterface::class);
+        $this->repository = new UserRepositoryEloquent($roleRepositoryMock);
     }
 
     public function test_can_create_user()
