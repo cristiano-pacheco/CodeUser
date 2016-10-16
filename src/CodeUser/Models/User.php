@@ -24,4 +24,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'codepress_user_roles', 'user_id', 'role_id');
+    }
+
+    public function hasRole($role)
+    {
+        return is_string($role) ?
+            $this->roles->contains('name', $role) : $role->intersect($this->roles)->count();
+    }
+
+    public function isAdmin()
+    {
+        return $this->hasRole(Role::ROLE_ADMIN);
+    }
 }

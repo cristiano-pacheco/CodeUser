@@ -4,9 +4,9 @@
 
     <div class="container">
 
-        <h3>Create User</h3>
+        <h3>Create Role</h3>
 
-        {!! Form::open(['method'=>'post','route'=>['admin.users.store']]) !!}
+        {!! Form::open(['method'=>'post','route'=>['admin.roles.store']]) !!}
 
         <div class="form-group">
             {!! Form::label('name',"Name:") !!}
@@ -14,8 +14,8 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label('email',"E-mail:") !!}
-            {!! Form::text('email',null, ['class'=>'form-control']) !!}
+            {!! Form::label('permissions[]',"Permissions:") !!}
+            {!! Form::select('permissions[]', $permissions, null,  ['class'=>'form-control', 'multiple' => 'multiple']) !!}
         </div>
 
         <div class="form-group">

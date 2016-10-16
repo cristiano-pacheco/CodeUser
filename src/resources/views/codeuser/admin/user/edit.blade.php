@@ -14,8 +14,19 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label('email',"Name:") !!}
+            {!! Form::label('email',"Email:") !!}
             {!! Form::text('email',  $user->email, ['class'=>'form-control']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('password',"Password:") !!}
+            {!! Form::password('password', ['class'=>'form-control']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('roles[]',"Roles:") !!}
+            {!! Form::select('roles[]', $roles, $user->roles->pluck('id')->toArray(),
+                ['class'=>'form-control', 'multiple' => 'multiple']) !!}
         </div>
 
         <div class="form-group">
